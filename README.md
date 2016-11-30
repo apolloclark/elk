@@ -17,7 +17,7 @@ vagrant up
 
 The following ELK components are installed:
 - Elasticsearch 2.4.1 (September 29, 2016)
-- Logstash 2.4.0 (Auguest 31, 2016)
+- Logstash 2.4.0 (August 31, 2016)
 - Kibana 4.6.2 (October 24, 2016)
 - Filbeat 1.3.1 (September 15, 2016)
 
