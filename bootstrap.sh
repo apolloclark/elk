@@ -33,7 +33,7 @@ apt-get -y install openjdk-7-jdk
 # install Elasticsearch
 echo 'deb http://packages.elastic.co/elasticsearch/2.x/debian stable main' | tee -a /etc/apt/sources.list.d/elasticsearch-2.x.list
 apt-get update
-apt-get install -y elasticsearch=2.4.1
+apt-get install -y elasticsearch=2.4.3
 service elasticsearch start
 
 # copy over config
@@ -50,7 +50,7 @@ update-rc.d elasticsearch defaults 95 10
 echo "[INFO] Installing Logstash..."
 echo 'deb http://packages.elastic.co/logstash/2.4/debian stable main' | sudo tee /etc/apt/sources.list.d/logstash-2.2.x.list
 apt-get update
-apt-get install -y logstash=1:2.4.0-1
+apt-get install -y logstash=1:2.4.1-1
 service logstash start
 
 # copy over config files, test, restart
@@ -68,7 +68,7 @@ update-rc.d logstash defaults 96 9
 echo "[INFO] Installing Kibana..."
 echo 'deb http://packages.elastic.co/kibana/4.6/debian stable main' | sudo tee -a /etc/apt/sources.list.d/kibana-4.4.x.list
 apt-get update
-apt-get install -y kibana=4.6.2
+apt-get install -y kibana=4.6.3
 service kibana start
 
 # copy over config, restart
