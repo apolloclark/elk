@@ -1,4 +1,4 @@
-# elk
+# vagrant-elk
 
 A vagrant based ELK stack (Elasticsearch, Logstash, Kibana).
 
