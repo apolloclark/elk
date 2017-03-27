@@ -18,15 +18,8 @@ Vagrant.configure("2") do |config|
         vb.cpus = 1
         vb.memory = 4096
         vb.gui = false
-        vb.name = "vagrant-elk"
+        vb.name = "elastic5x-ubuntu14"
         override.vm.synced_folder "./provision", "/vagrant"
- 
-        # setup local apt-get cache
-        # if Vagrant.has_plugin?("vagrant-cachier")
-            # Configure cached packages to be shared between instances of the same base box.
-            # More info on the "Usage" link above
-            # override.cache.scope = :box
-        # end
     
         # disable the vbguest update plugin
         if Vagrant.has_plugin?("vagrant-vbguest")
