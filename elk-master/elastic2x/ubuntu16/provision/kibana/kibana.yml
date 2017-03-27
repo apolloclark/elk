@@ -68,7 +68,7 @@ server.host: "0.0.0.0"
 # pid.file: /var/run/kibana.pid
 
 # Enables you specify a file where Kibana stores log output.
-# logging.dest: stdout
+logging.dest: /var/log/kibana.log
 
 # Set the value of this setting to true to suppress all logging output.
 # logging.silent: false

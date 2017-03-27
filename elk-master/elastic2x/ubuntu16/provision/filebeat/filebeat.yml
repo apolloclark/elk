@@ -3,6 +3,7 @@
 ############################# Filebeat ######################################
 filebeat:
   # List of prospectors to fetch data.
+  # https://www.elastic.co/guide/en/beats/filebeat/current/configuration-filebeat-options.html
   prospectors:
     # Each - is a prospector. Below are the prospector specific configurations
     -
@@ -14,7 +15,7 @@ filebeat:
       paths:
         - /var/log/auth.log
         - /var/logsyslog
-        - /var/log/*.log
+        # - /var/log/*.log
         #- c:\programdata\elasticsearch\logs\*
 
       # Configure the file encoding for reading files with international characters

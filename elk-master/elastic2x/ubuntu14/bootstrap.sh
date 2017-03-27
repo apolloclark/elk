@@ -4,20 +4,32 @@
 # @see https://github.com/Asquera/elk-example
 # @see https://github.com/bhaskarvk/vagrant-elk-cluster
 
-
-
 # set the installation to be non-interactive
 export DEBIAN_FRONTEND="noninteractive"
 
 # update aptitude
 apt-get update
-apt-get install -y unzip
+apt-get install -y unzip git
 
+# enable colored Bash prompt
+cp /vagrant/bashrc /root/.bashrc
+cp /vagrant/bashrc /home/vagrant/.bashrc
 
+# enable more robust Nano syntax highlighting
+git clone https://github.com/scopatz/nanorc.git /root/.nano
+cat /root/.nano/nanorc >> /root/.nanorc
+git clone https://github.com/scopatz/nanorc.git /home/vagrant/.nano
+cat /home/vagrant/.nano/nanorc >> /home/vagrant/.nanorc
 
+# install Java
+apt-get purge openjdk*
+add-apt-repository ppa:openjdk-r/ppa 2>&1
+apt-get update
+apt-get install -y openjdk-7-jre
 
 # install the Elastic PGP Key
 wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | apt-key add -
+
 
 
 
@@ -28,40 +40,36 @@ wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | apt-key add -
 # @see https://www.elastic.co/guide/en/elasticsearch/reference/2.4/setup-repositories.html
 echo "[INFO] Installing Elasticsearch..."
 
-# install Java
-apt-get purge openjdk*
-apt-get -y install openjdk-7-jdk
-
 # install Elasticsearch
 echo 'deb http://packages.elastic.co/elasticsearch/2.x/debian stable main' | \
 	tee -a /etc/apt/sources.list.d/elasticsearch-2.x.list
 apt-get update
 apt-get install -y elasticsearch=2.4.3
+update-rc.d elasticsearch defaults 95 10
 service elasticsearch start
 
 # copy over config
 cp -R /vagrant/elasticsearch/* /etc/elasticsearch/
 service elasticsearch restart
-update-rc.d elasticsearch defaults 95 10
 
 
 
 
 
-# install Logtasth
+# install Logstash
 # @see https://www.elastic.co/guide/en/logstash/2.4/installing-logstash.html
 echo "[INFO] Installing Logstash..."
 echo 'deb http://packages.elastic.co/logstash/2.4/debian stable main' | \
 	tee /etc/apt/sources.list.d/logstash-2.4.x.list
 apt-get update
 apt-get install -y logstash=1:2.4.1-1
+update-rc.d logstash defaults 96 9
 service logstash start
 
 # copy over config files, test, restart
 cp -R /vagrant/logstash/* /etc/logstash/conf.d/
 service logstash configtest
 service logstash restart
-update-rc.d logstash defaults 96 9
 
 
 
@@ -74,12 +82,12 @@ echo 'deb http://packages.elastic.co/kibana/4.6/debian stable main' | \
 	tee -a /etc/apt/sources.list.d/kibana-4.6.x.list
 apt-get update
 apt-get install -y kibana=4.6.3
+update-rc.d kibana defaults 96 9
 service kibana start
 
 # copy over config, restart
 cp -R /vagrant/kibana/* /opt/kibana/config/
 service kibana restart
-update-rc.d kibana defaults 96 9
 
 
 
@@ -113,13 +121,13 @@ echo "deb https://packages.elastic.co/beats/apt stable main" | \
 	tee -a /etc/apt/sources.list.d/beats.list
 apt-get update
 apt-get install -y filebeat=1.3.1
+update-rc.d filebeat defaults 95 10
 service filebeat start
 
 # copy over config files, restart, enable auto-start
 mkdir -p /var/log/filebeat
 cp -R /vagrant/filebeat/* /etc/filebeat/
 service filebeat restart 2>&1
-update-rc.d filebeat defaults 95 10
 
 # curl -XGET 'http://localhost:9200/filebeat-*/_search?pretty'
 
@@ -131,13 +139,13 @@ update-rc.d filebeat defaults 95 10
 # https://www.elastic.co/guide/en/beats/packetbeat/1.3/packetbeat-installation.html#deb
 apt-get install -y libpcap0.8
 apt-get install -y packetbeat=1.3.1
+update-rc.d packetbeat defaults 95 10
 service packetbeat start
 
 # copy over config files, restart, enable auto-start
 mkdir -p /var/log/packetbeat
 cp -R /vagrant/packetbeat/* /etc/packetbeat/
 service packetbeat restart 2>&1
-update-rc.d packetbeat defaults 95 10
 
 exit;
 

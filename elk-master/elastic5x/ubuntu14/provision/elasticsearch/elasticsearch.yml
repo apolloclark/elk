@@ -94,7 +94,7 @@
 # action.destructive_requires_name: true
 network.bind_host: 0
 network.host: 0.0.0.0
-script.inline: on
-script.indexed: on
+script.inline: true
+script.stored: true
 http.cors.enabled: true
 http.cors.allow-origin: /https?:\/\/.*/
