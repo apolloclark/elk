@@ -50,12 +50,12 @@ apt-get update
 # @see https://www.elastic.co/guide/en/elasticsearch/reference/5.2/deb.html
 echo "[INFO] Installing Elasticsearch..."
 apt-get install -y elasticsearch=5.2.2
+update-rc.d elasticsearch defaults 95 10
 service elasticsearch start
 
 # copy over config, restart, enable auto-start
 cp -R /vagrant/elasticsearch/* /etc/elasticsearch/
 service elasticsearch restart
-update-rc.d elasticsearch defaults 95 10
 
 
 
@@ -80,12 +80,12 @@ initctl restart logstash
 # @see https://www.elastic.co/guide/en/kibana/5.2/deb.html
 echo "[INFO] Installing Kibana..."
 apt-get install -y kibana=5.2.2
+update-rc.d kibana defaults 96 9
 service kibana start
 
 # copy over config, restart, enable auto-start
 cp -R /vagrant/kibana/* /etc/kibana/
 service kibana restart 2>&1
-update-rc.d kibana defaults 96 9
 
 
 
@@ -98,13 +98,13 @@ update-rc.d kibana defaults 96 9
 # @see https://www.elastic.co/guide/en/beats/libbeat/5.2/setup-repositories.html
 echo "[INFO] Installing Filbeat..."
 apt-get install -y filebeat=5.2.2
+update-rc.d filebeat defaults 95 10
 service filebeat start 2>&1
 
 # copy over config files, restart, enable auto-start
 mkdir -p /var/log/filebeat
 cp -R /vagrant/filebeat/* /etc/filebeat/
 service filebeat restart 2>&1
-update-rc.d filebeat defaults 95 10
 
 # curl -XGET 'http://localhost:9200/filebeat-*/_search?pretty'
 
@@ -117,13 +117,13 @@ update-rc.d filebeat defaults 95 10
 echo "[INFO] Installing Packetbeat..."
 apt-get install -y libpcap0.8
 apt-get install -y packetbeat=5.2.2
+update-rc.d packetbeat defaults 95 10
 service packetbeat start 2>&1
 
 # copy over config files, restart, enable auto-start
 mkdir -p /var/log/packetbeat
 cp -R /vagrant/packetbeat/* /etc/packetbeat/
 service packetbeat restart 2>&1
-update-rc.d packetbeat defaults 95 10
 
 
 
@@ -135,8 +135,8 @@ update-rc.d packetbeat defaults 95 10
 # sudo dpkg -i metricbeat-5.2.1-amd64.deb
 echo "[INFO] Installing Metricbeat..."
 apt-get install -y metricbeat=5.2.2
-service metricbeat start 2>&1
 update-rc.d metricbeat defaults 95 10
+service metricbeat start 2>&1
 
 
 
@@ -146,26 +146,8 @@ update-rc.d metricbeat defaults 95 10
 # https://www.elastic.co/guide/en/beats/heartbeat/5.2/heartbeat-installation.html#deb
 echo "[INFO] Installing Heartbeat..."
 apt-get install -y heartbeat=5.2.2
-service heartbeat start 2>&1
 update-rc.d heartbeat defaults 95 10
-
-
-
-
-
-# install the Beats dashboard
-# https://github.com/elastic/beats-dashboards/releases 1.3.1
-cd ~
-curl -L -O -s https://download.elastic.co/beats/dashboards/beats-dashboards-1.3.1.zip
-unzip -q beats-dashboards-*.zip
-cd beats-dashboards-*
-./load.sh > /dev/null 2>&1
-
-# install the Filebeat template
-cd ~
-curl -O -s https://gist.githubusercontent.com/thisismitch/3429023e8438cc25b86c/raw/d8c479e2a1adcea8b1fe86570e42abab0f10f364/filebeat-index-template.json
-curl -XPUT -s 'http://localhost:9200/_template/filebeat?pretty' -d@filebeat-index-template.json
-# verify the output is {"acknowledged" : true}
+service heartbeat start 2>&1
 
 
 

@@ -48,7 +48,7 @@ https://www.elastic.co/downloads/past-releases
 /var/log/filebeat/filebeat.log
 
 # logstash
-/var/log/filebeat/filebeat.log
+/var/log/logstash/logstash-plain.log
 /var/log/logstash/logstash.stdout
 /var/log/logstash/logstash.log
 
