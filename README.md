@@ -32,11 +32,11 @@ elastic2x
 
 elastic5x
 - Elasticsearch 5.3.0 (March 28, 2017)
-- Logstash 		5.3.0 (March 20, 2017)
-- Kibana 		5.3.0 (March 20, 2017)
-- Filebeat 		5.3.0 (March 20, 2017)
-- Packetbeat 	5.2.2 (March 20, 2017)
-- Metricbeat 	5.2.2 (March 20, 2017)
+- Logstash 		5.3.0 (March 29, 2017)
+- Kibana 		5.3.0 (March 28, 2017)
+- Filebeat 		5.3.0 (March 28, 2017)
+- Packetbeat 	5.2.2 (March 28, 2017)
+- Metricbeat 	5.2.2 (March 28, 2017)
 
 
 ## Release Notes
