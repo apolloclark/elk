@@ -44,12 +44,13 @@ apt-get update
 
 
 # Install Elasticsearch
+# @see https://github.com/elastic/elasticsearch/releases
 # @see https://www.elastic.co/downloads/elasticsearch
 # @see https://www.elastic.co/guide/en/elasticsearch/reference/current/es-release-notes.html
 # @see https://www.elastic.co/guide/en/elasticsearch/reference/5.2/es-release-notes.html
 # @see https://www.elastic.co/guide/en/elasticsearch/reference/5.2/deb.html
 echo "[INFO] Installing Elasticsearch..."
-apt-get install -y elasticsearch=5.2.2
+apt-get install -y elasticsearch=5.3.0
 update-rc.d elasticsearch defaults 95 10
 service elasticsearch start
 
@@ -62,10 +63,11 @@ service elasticsearch restart
 
 
 # install Logstash
+# @see https://github.com/elastic/logstash/releases
 # @see https://www.elastic.co/guide/en/logstash/current/releasenotes.html
 # @see https://www.elastic.co/guide/en/logstash/5.2/installing-logstash.html
 echo "[INFO] Installing Logstash..."
-apt-get install -y logstash=1:5.2.2-1
+apt-get install -y logstash=1:5.3.0-1
 initctl start logstash
 
 # copy over config files, test, restart
@@ -77,9 +79,11 @@ initctl restart logstash
 
 
 # Install Kibana
+# @see https://github.com/elastic/kibana/releases
+# @see https://www.elastic.co/guide/en/kibana/current/release-notes.html
 # @see https://www.elastic.co/guide/en/kibana/5.2/deb.html
 echo "[INFO] Installing Kibana..."
-apt-get install -y kibana=5.2.2
+apt-get install -y kibana=5.3.0
 update-rc.d kibana defaults 96 9
 service kibana start
 
@@ -95,9 +99,10 @@ service kibana restart 2>&1
 # https://github.com/elastic/beats/releases	5.2.2
 
 # Install Filebeat
+# https://github.com/elastic/beats
 # @see https://www.elastic.co/guide/en/beats/libbeat/5.2/setup-repositories.html
 echo "[INFO] Installing Filbeat..."
-apt-get install -y filebeat=5.2.2
+apt-get install -y filebeat=5.3.0
 update-rc.d filebeat defaults 95 10
 service filebeat start 2>&1
 
@@ -116,7 +121,7 @@ service filebeat restart 2>&1
 # https://www.elastic.co/guide/en/beats/packetbeat/current/packetbeat-installation.html#deb
 echo "[INFO] Installing Packetbeat..."
 apt-get install -y libpcap0.8
-apt-get install -y packetbeat=5.2.2
+apt-get install -y packetbeat=5.3.0
 update-rc.d packetbeat defaults 95 10
 service packetbeat start 2>&1
 
@@ -134,7 +139,7 @@ service packetbeat restart 2>&1
 # curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-5.2.1-amd64.deb
 # sudo dpkg -i metricbeat-5.2.1-amd64.deb
 echo "[INFO] Installing Metricbeat..."
-apt-get install -y metricbeat=5.2.2
+apt-get install -y metricbeat=5.3.0
 update-rc.d metricbeat defaults 95 10
 service metricbeat start 2>&1
 
@@ -145,7 +150,7 @@ service metricbeat start 2>&1
 # Install Heartbeat
 # https://www.elastic.co/guide/en/beats/heartbeat/5.2/heartbeat-installation.html#deb
 echo "[INFO] Installing Heartbeat..."
-apt-get install -y heartbeat=5.2.2
+apt-get install -y heartbeat=5.3.0
 update-rc.d heartbeat defaults 95 10
 service heartbeat start 2>&1
 

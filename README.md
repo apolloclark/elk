@@ -2,7 +2,8 @@
 
 A vagrant based ELK stack (Elasticsearch, Logstash, Kibana).
 
-Installation:
+## Installation
+
 ```shell
 vagrant box update
 vagrant up
@@ -19,7 +20,7 @@ vagrant up
 # you may have to wait a few minutes for the results to flow in
 ```
 
-## Notes
+## Versions
 
 The following ELK components are installed:
 
@@ -30,14 +31,33 @@ elastic2x
 - Filebeat 		1.3.1 (September 15, 2016)
 
 elastic5x
-- Elasticsearch 5.2.2 (February 24, 2017)
-- Logstash 		5.2.2 (February 24, 2017)
-- Kibana 		5.2.2 (February 24, 2017)
-- Filebeat 		5.2.2 (February 24, 2017)
-- Packetbeat 	5.2.2 (February 24, 2017)
-- Metricbeat 	5.2.2 (February 24, 2017)
+- Elasticsearch 5.3.0 (March 28, 2017)
+- Logstash 		5.3.0 (March 20, 2017)
+- Kibana 		5.3.0 (March 20, 2017)
+- Filebeat 		5.3.0 (March 20, 2017)
+- Packetbeat 	5.2.2 (March 20, 2017)
+- Metricbeat 	5.2.2 (March 20, 2017)
 
+
+## Release Notes
+
+Elastic
 https://www.elastic.co/downloads/past-releases
+
+Elasticsearch
+https://github.com/elastic/elasticsearch/releases
+https://www.elastic.co/guide/en/elasticsearch/reference/current/es-release-notes.html
+
+Logstash
+https://github.com/elastic/logstash/releases
+https://www.elastic.co/guide/en/logstash/current/releasenotes.html
+
+Kibana
+https://github.com/elastic/kibana/releases
+https://www.elastic.co/guide/en/kibana/current/release-notes.html
+
+Beats
+https://github.com/elastic/beats/releases
 
 
 
