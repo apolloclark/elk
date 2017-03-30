@@ -79,7 +79,7 @@ echo "[INFO] Installing Logstash..."
 apt-get install -y logstash=1:$LOGSTASH_VERSION-1
 initctl start logstash
 
-# copy over config files, test, restart
+# copy over config files, restart
 cp -R /vagrant/logstash/* /etc/logstash/conf.d/
 initctl restart logstash
 
@@ -96,7 +96,7 @@ apt-get install -y kibana=$KIBANA_VERSION
 update-rc.d kibana defaults 96 9
 service kibana start
 
-# copy over config, restart, enable auto-start
+# copy over config, restart
 cp -R /vagrant/kibana/* /etc/kibana/
 service kibana restart 2>&1
 
@@ -115,7 +115,7 @@ apt-get install -y filebeat=$FILEBEAT_VERSION
 update-rc.d filebeat defaults 95 10
 service filebeat start 2>&1
 
-# copy over config files, restart, enable auto-start
+# copy over config files, restart
 mkdir -p /var/log/filebeat
 cp -R /vagrant/filebeat/* /etc/filebeat/
 service filebeat restart 2>&1
@@ -134,7 +134,7 @@ apt-get install -y packetbeat=$PACKETBEAT_VERSION
 update-rc.d packetbeat defaults 95 10
 service packetbeat start 2>&1
 
-# copy over config files, restart, enable auto-start
+# copy over config files, restart
 mkdir -p /var/log/packetbeat
 cp -R /vagrant/packetbeat/* /etc/packetbeat/
 service packetbeat restart 2>&1
@@ -152,6 +152,11 @@ apt-get install -y metricbeat=$METRICBEAT_VERSION
 update-rc.d metricbeat defaults 95 10
 service metricbeat start 2>&1
 
+# copy over config files, restart
+mkdir -p /var/log/metricbeat
+cp -R /vagrant/metricbeat/* /etc/metricbeat/
+service metricbeat restart 2>&1
+
 
 
 
@@ -162,6 +167,11 @@ echo "[INFO] Installing Heartbeat..."
 apt-get install -y heartbeat=$HEARTBEAT_VERSION
 update-rc.d heartbeat defaults 95 10
 service heartbeat start 2>&1
+
+# copy over config files, restart
+mkdir -p /var/log/heartbeat
+cp -R /vagrant/heartbeat/* /etc/heartbeat/
+service heartbeat restart 2>&1
 
 
 
