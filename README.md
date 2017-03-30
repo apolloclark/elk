@@ -13,7 +13,7 @@ vagrant up
 # under "Index name or pattern", type "filebeat-*"
 # under "Time-field name", select "@timestamp"
 # click "Create"
-# on the next page, click the green star, setting the default index
+# on the next page, click the (green/blue) star, setting the default index
 
 # click "Discover", in the top menu
 # click drop-down in left-side menu, select "filebeat-*"
@@ -66,6 +66,12 @@ https://github.com/elastic/beats/releases
 
 # filebeat
 /var/log/filebeat/filebeat.log
+
+# metricbeat
+/var/log/metricbeat/metricbeat
+
+# heartbeat
+/var/log/heartbeat/heartbeat
 
 # logstash
 /var/log/logstash/logstash-plain.log
