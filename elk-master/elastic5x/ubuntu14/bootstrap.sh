@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # set the ELK package versions
-ELASTIC_VERSION="5.3.0"
+ELASTIC_VERSION="5.5.0"
 ELASTICSEARCH_VERSION=$ELASTIC_VERSION
 LOGSTASH_VERSION=$ELASTIC_VERSION
 KIBANA_VERSION=$ELASTIC_VERSION
@@ -21,6 +21,21 @@ export DEBIAN_FRONTEND="noninteractive"
 apt-get update
 apt-get upgrade -y
 apt-get install -y unzip git
+
+# install jq from source
+apt-get install -y libssl1.0.0 libtool bison automake
+git clone --depth=50 https://github.com/stedolan/jq.git stedolan/jq
+cd ./stedolan/jq
+git submodule update --init --recursive
+autoreconf -i 
+./configure
+make -j8
+make install
+
+
+
+
+
 
 # enable colored Bash prompt
 cp /vagrant/bashrc /root/.bashrc
