@@ -12,9 +12,7 @@ filebeat:
       # For each file found under this path, a harvester is started.
       # Make sure not file is defined twice as this can lead to unexpected behaviour.
       paths:
-        - /var/log/auth.log
-        - /var/logsyslog
-        - /var/log/*.log
+        - /var/log/syslog
         #- c:\programdata\elasticsearch\logs\*
 
       # Configure the file encoding for reading files with international characters
@@ -144,9 +142,20 @@ filebeat:
       #force_close_files: false
 
     # Additional prospector
-    #-
-      # Configuration to use stdin input
-      #input_type: stdin
+    -
+      paths:
+        - /var/log/auth.log
+        - /var/log/syslog
+        - /var/log/*.log
+      input_type: log
+      document_type: authlog
+      
+    # Additional prospector
+    -
+      paths:
+        - /var/log/*/*.log
+      input_type: log
+      document_type: misclog
 
   # General filebeat configuration options
   #

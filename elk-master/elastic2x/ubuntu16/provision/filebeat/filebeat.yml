@@ -14,8 +14,8 @@ filebeat:
       # Make sure not file is defined twice as this can lead to unexpected behaviour.
       paths:
         - /var/log/auth.log
-        - /var/logsyslog
-        # - /var/log/*.log
+        - /var/log/syslog
+        - /var/log/*.log
         #- c:\programdata\elasticsearch\logs\*
 
       # Configure the file encoding for reading files with international characters
