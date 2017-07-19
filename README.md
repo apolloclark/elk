@@ -20,6 +20,13 @@ vagrant up
 # you may have to wait a few minutes for the results to flow in
 ```
 
+## Guides
+
+I've written a guide to Elasticsearch commands here:
+
+https://gist.github.com/apolloclark/c9eb0c1a01798ac2e48492ceeb367a4f
+
+
 ## Versions
 
 The following ELK components are installed:
@@ -31,12 +38,12 @@ elastic2x
 - Filebeat 		1.3.1 (September 15, 2016)
 
 elastic5x
-- Elasticsearch 5.3.0 (March 28, 2017)
-- Logstash 		5.3.0 (March 29, 2017)
-- Kibana 		5.3.0 (March 28, 2017)
-- Filebeat 		5.3.0 (March 28, 2017)
-- Packetbeat 	5.2.2 (March 28, 2017)
-- Metricbeat 	5.2.2 (March 28, 2017)
+- Elasticsearch 5.5.0 (July 6, 2017)
+- Logstash 		5.5.0 (July 6, 2017)
+- Kibana 		5.5.0 (July 6, 2017)
+- Filebeat 		5.5.0 (July 6, 2017)
+- Packetbeat 	5.5.0 (July 6, 2017)
+- Metricbeat 	5.5.0 (July 6, 2017)
 
 
 ## Release Notes
