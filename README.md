@@ -10,6 +10,8 @@ vagrant up
 
 # open a browser
 # http://127.0.0.1:5601
+# username = elastic
+# password = changeme
 # under "Index name or pattern", type "filebeat-*"
 # under "Time-field name", select "@timestamp"
 # click "Create"
@@ -38,12 +40,12 @@ elastic2x
 - Filebeat 		1.3.1 (September 15, 2016)
 
 elastic5x
-- Elasticsearch 5.5.0 (July 6, 2017)
-- Logstash 		5.5.0 (July 6, 2017)
-- Kibana 		5.5.0 (July 6, 2017)
-- Filebeat 		5.5.0 (July 6, 2017)
-- Packetbeat 	5.5.0 (July 6, 2017)
-- Metricbeat 	5.5.0 (July 6, 2017)
+- Elasticsearch 5.5.1 (July 25, 2017)
+- Logstash 		5.5.1 (July 25, 2017)
+- Kibana 		5.5.1 (July 25, 2017)
+- Filebeat 		5.5.1 (July 25, 2017)
+- Packetbeat 	5.5.1 (July 25, 2017)
+- Metricbeat 	5.5.1 (July 25, 2017)
 
 
 ## Release Notes
@@ -66,13 +68,16 @@ https://www.elastic.co/guide/en/kibana/current/release-notes.html
 Beats
 https://github.com/elastic/beats/releases
 
+X-Pack
+https://www.elastic.co/guide/en/x-pack/current/xpack-introduction.html
+
 
 
 ## Log files
 ```shell
 
 # filebeat
-/var/log/filebeat/filebeat.log
+/var/log/filebeat/filebeat
 
 # metricbeat
 /var/log/metricbeat/metricbeat
@@ -105,13 +110,18 @@ https://github.com/elastic/beats/releases
 
 # elasticsearch
 /etc/elasticsearch/
+/usr/share/elasticsearch/
 
 # logstash
 /etc/logstash
+/usr/share/logstash
 
 # kibana
+/etc/kibana
+/usr/share/kibana
 /opt/kibana
 
 # filebeat
 /etc/filebeat
+/usr/share/filebeat
 ```

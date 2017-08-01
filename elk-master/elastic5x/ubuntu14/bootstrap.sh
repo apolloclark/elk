@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # set the ELK package versions
-ELASTIC_VERSION="5.5.0"
+ELASTIC_VERSION="5.5.1"
 ELASTICSEARCH_VERSION=$ELASTIC_VERSION
 LOGSTASH_VERSION=$ELASTIC_VERSION
 KIBANA_VERSION=$ELASTIC_VERSION
@@ -71,8 +71,8 @@ apt-get update
 # @see https://github.com/elastic/elasticsearch/releases
 # @see https://www.elastic.co/downloads/elasticsearch
 # @see https://www.elastic.co/guide/en/elasticsearch/reference/current/es-release-notes.html
-# @see https://www.elastic.co/guide/en/elasticsearch/reference/5.2/es-release-notes.html
-# @see https://www.elastic.co/guide/en/elasticsearch/reference/5.2/deb.html
+# @see https://www.elastic.co/guide/en/elasticsearch/reference/5.5/es-release-notes.html
+# @see https://www.elastic.co/guide/en/elasticsearch/reference/5.5/deb.html
 echo "[INFO] Installing Elasticsearch..."
 apt-get install -y elasticsearch=$ELASTICSEARCH_VERSION
 update-rc.d elasticsearch defaults 95 10
@@ -89,14 +89,14 @@ service elasticsearch restart
 # install Logstash
 # @see https://github.com/elastic/logstash/releases
 # @see https://www.elastic.co/guide/en/logstash/current/releasenotes.html
-# @see https://www.elastic.co/guide/en/logstash/5.2/installing-logstash.html
+# @see https://www.elastic.co/guide/en/logstash/5.5/installing-logstash.html
 echo "[INFO] Installing Logstash..."
 apt-get install -y logstash=1:$LOGSTASH_VERSION-1
 initctl start logstash
 
 # copy over config files, restart
 cp -R /vagrant/logstash/* /etc/logstash/conf.d/
-initctl restart logstash
+initctl restart logstash 2>&1
 
 
 
@@ -105,7 +105,7 @@ initctl restart logstash
 # Install Kibana
 # @see https://github.com/elastic/kibana/releases
 # @see https://www.elastic.co/guide/en/kibana/current/release-notes.html
-# @see https://www.elastic.co/guide/en/kibana/5.2/deb.html
+# @see https://www.elastic.co/guide/en/kibana/5.5/deb.html
 echo "[INFO] Installing Kibana..."
 apt-get install -y kibana=$KIBANA_VERSION
 update-rc.d kibana defaults 96 9
@@ -120,11 +120,11 @@ service kibana restart 2>&1
 
 
 # Beats
-# https://github.com/elastic/beats/releases	5.2.2
+# https://github.com/elastic/beats/releases
 
 # Install Filebeat
 # https://github.com/elastic/beats
-# @see https://www.elastic.co/guide/en/beats/libbeat/5.2/setup-repositories.html
+# @see https://www.elastic.co/guide/en/beats/libbeat/5.5/setup-repositories.html
 echo "[INFO] Installing Filbeat..."
 apt-get install -y filebeat=$FILEBEAT_VERSION
 update-rc.d filebeat defaults 95 10
@@ -159,9 +159,7 @@ service packetbeat restart 2>&1
 
 
 # Install Metricbeat
-# https://www.elastic.co/guide/en/beats/metricbeat/5.2/metricbeat-installation.html#deb
-# curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-5.2.1-amd64.deb
-# sudo dpkg -i metricbeat-5.2.1-amd64.deb
+# https://www.elastic.co/guide/en/beats/metricbeat/5.5/metricbeat-installation.html#deb
 echo "[INFO] Installing Metricbeat..."
 apt-get install -y metricbeat=$METRICBEAT_VERSION
 update-rc.d metricbeat defaults 95 10
@@ -177,7 +175,7 @@ service metricbeat restart 2>&1
 
 
 # Install Heartbeat
-# https://www.elastic.co/guide/en/beats/heartbeat/5.2/heartbeat-installation.html#deb
+# https://www.elastic.co/guide/en/beats/heartbeat/5.5/heartbeat-installation.html#deb
 echo "[INFO] Installing Heartbeat..."
 apt-get install -y heartbeat=$HEARTBEAT_VERSION
 update-rc.d heartbeat defaults 95 10
@@ -188,6 +186,34 @@ mkdir -p /var/log/heartbeat
 cp -R /vagrant/heartbeat/* /etc/heartbeat/
 service heartbeat restart 2>&1
 
+
+
+
+
+# Install X-Pack
+# https://www.elastic.co/guide/en/x-pack/current/installing-xpack.html
+echo "[INFO] Installing X-Pack... this will take like 25+ minutes..."
+/var/lib/dpkg/info/ca-certificates-java.postinst configure
+
+# https://www.elastic.co/guide/en/elasticsearch/reference/5.5/installing-xpack-es.html#xpack-package-installation
+cd /usr/share/elasticsearch
+bin/elasticsearch-plugin install x-pack --batch
+service elasticsearch restart 2>&1
+
+# https://www.elastic.co/guide/en/kibana/5.5/installing-xpack-kb.html
+cd /usr/share/kibana
+service elasticsearch stop 2>&1
+date +%s
+bin/kibana-plugin install x-pack
+date +%s
+service kibana restart 2>&1
+
+# https://www.elastic.co/guide/en/logstash/5.5/installing-xpack-log.html
+cd /usr/share/logstash
+service logstash stop 2>&1
+bin/logstash-plugin install x-pack
+service logstash restart 2>&1
+service elasticsearch restart 2>&1
 
 
 
