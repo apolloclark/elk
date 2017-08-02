@@ -51,25 +51,25 @@ elastic5x
 ## Release Notes
 
 Elastic
-https://www.elastic.co/downloads/past-releases
+- https://www.elastic.co/downloads/past-releases
 
 Elasticsearch
-https://github.com/elastic/elasticsearch/releases
-https://www.elastic.co/guide/en/elasticsearch/reference/current/es-release-notes.html
+- https://github.com/elastic/elasticsearch/releases
+- https://www.elastic.co/guide/en/elasticsearch/reference/current/es-release-notes.html
 
 Logstash
-https://github.com/elastic/logstash/releases
-https://www.elastic.co/guide/en/logstash/current/releasenotes.html
+- https://github.com/elastic/logstash/releases
+- https://www.elastic.co/guide/en/logstash/current/releasenotes.html
 
 Kibana
-https://github.com/elastic/kibana/releases
-https://www.elastic.co/guide/en/kibana/current/release-notes.html
+- https://github.com/elastic/kibana/releases
+- https://www.elastic.co/guide/en/kibana/current/release-notes.html
 
 Beats
-https://github.com/elastic/beats/releases
+- https://github.com/elastic/beats/releases
 
 X-Pack
-https://www.elastic.co/guide/en/x-pack/current/xpack-introduction.html
+- https://www.elastic.co/guide/en/x-pack/current/xpack-introduction.html
 
 
 
