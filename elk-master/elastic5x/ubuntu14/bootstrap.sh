@@ -213,7 +213,9 @@ cd /usr/share/logstash
 service logstash stop 2>&1
 bin/logstash-plugin install x-pack
 service logstash restart 2>&1
+sleep 30
 service elasticsearch restart 2>&1
+sleep 30
 
 
 
