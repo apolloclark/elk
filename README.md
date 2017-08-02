@@ -70,6 +70,7 @@ Beats
 
 X-Pack
 - https://www.elastic.co/guide/en/x-pack/current/xpack-introduction.html
+- https://www.elastic.co/guide/en/x-pack/current/xpack-change-list.html
 
 
 
@@ -108,20 +109,28 @@ X-Pack
 ## Application folders
 ```shell
 
-# elasticsearch
-/etc/elasticsearch/
-/usr/share/elasticsearch/
+# filebeat
+/etc/filebeat
+/usr/share/filebeat
+
+# metricbeat
+/etc/metricbeat
+/usr/share/metricbeat
+
+# heartbeat
+/etc/heartbeat
+/usr/share/heartbeat
 
 # logstash
 /etc/logstash
 /usr/share/logstash
 
+# elasticsearch
+/etc/elasticsearch/
+/usr/share/elasticsearch/
+
 # kibana
 /etc/kibana
 /usr/share/kibana
 /opt/kibana
-
-# filebeat
-/etc/filebeat
-/usr/share/filebeat
 ```
