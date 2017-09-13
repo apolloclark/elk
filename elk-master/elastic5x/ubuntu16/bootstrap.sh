@@ -92,11 +92,11 @@ service elasticsearch restart
 # @see https://www.elastic.co/guide/en/logstash/5.5/installing-logstash.html
 echo "[INFO] Installing Logstash..."
 apt-get install -y logstash=1:$LOGSTASH_VERSION-1
-initctl start logstash
+service logstash start
 
 # copy over config files, restart
 cp -R /vagrant/logstash/* /etc/logstash/conf.d/
-initctl restart logstash 2>&1
+service logstash restart 2>&1
 
 
 
