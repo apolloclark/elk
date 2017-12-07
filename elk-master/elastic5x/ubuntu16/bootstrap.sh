@@ -81,6 +81,7 @@ service elasticsearch start
 # copy over config, restart, enable auto-start
 cp -R /vagrant/elasticsearch/* /etc/elasticsearch/
 service elasticsearch restart
+/bin/systemctl enable elasticsearch.service
 
 
 
@@ -97,6 +98,7 @@ service logstash start
 # copy over config files, restart
 cp -R /vagrant/logstash/* /etc/logstash/conf.d/
 service logstash restart 2>&1
+/bin/systemctl enable logstash.service
 
 
 
@@ -114,6 +116,7 @@ service kibana start
 # copy over config, restart
 cp -R /vagrant/kibana/* /etc/kibana/
 service kibana restart 2>&1
+/bin/systemctl enable kibana.service
 
 
 
@@ -134,6 +137,7 @@ service filebeat start 2>&1
 mkdir -p /var/log/filebeat
 cp -R /vagrant/filebeat/* /etc/filebeat/
 service filebeat restart 2>&1
+/bin/systemctl enable filebeat.service
 
 # curl -XGET 'http://localhost:9200/filebeat-*/_search?pretty'
 
@@ -153,6 +157,7 @@ service packetbeat start 2>&1
 mkdir -p /var/log/packetbeat
 cp -R /vagrant/packetbeat/* /etc/packetbeat/
 service packetbeat restart 2>&1
+/bin/systemctl enable packetbeat.service
 
 
 
@@ -169,6 +174,7 @@ service metricbeat start 2>&1
 mkdir -p /var/log/metricbeat
 cp -R /vagrant/metricbeat/* /etc/metricbeat/
 service metricbeat restart 2>&1
+/bin/systemctl enable metricbeat.service
 
 
 
@@ -185,6 +191,7 @@ service heartbeat start 2>&1
 mkdir -p /var/log/heartbeat
 cp -R /vagrant/heartbeat/* /etc/heartbeat/
 service heartbeat restart 2>&1
+/bin/systemctl enable heartbeat.service
 
 
 

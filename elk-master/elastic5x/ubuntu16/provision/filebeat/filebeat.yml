@@ -1,6 +1,9 @@
 ################### Filebeat Configuration Example #########################
 
 ############################# Filebeat ######################################
+# https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-configuration.html
+# https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-configuration-details.html
+
 filebeat:
   # List of prospectors to fetch data.
   prospectors:

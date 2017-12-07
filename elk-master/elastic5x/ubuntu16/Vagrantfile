@@ -6,6 +6,7 @@ Vagrant.configure("2") do |config|
     # configure VM
     config.vm.box = "apolloclark/ubuntu1604-64"
     config.vm.box_version = "20170907"
+    config.ssh.insert_key = false
     
     # configure provisioning
     config.vm.provision "shell", path: "bootstrap.sh"
@@ -22,7 +23,7 @@ Vagrant.configure("2") do |config|
         vb.gui = false
         vb.name = "elastic5x-ubuntu16"
         override.vm.synced_folder "./provision", "/vagrant"
-    
+
         # disable the vbguest update plugin
         if Vagrant.has_plugin?("vagrant-vbguest")
             override.vbguest.auto_update = false
