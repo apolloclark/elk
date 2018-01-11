@@ -40,12 +40,12 @@ elastic2x
 - Filebeat 		1.3.1 (September 15, 2016)
 
 elastic5x
-- Elasticsearch 5.6.0 (Sept 12, 2017)
-- Logstash 		5.6.0 (Sept 12, 2017)
-- Kibana 		5.6.0 (Sept 12, 2017)
-- Filebeat 		5.6.0 (Sept 12, 2017)
-- Packetbeat 	5.6.0 (Sept 12, 2017)
-- Metricbeat 	5.6.0 (Sept 12, 2017)
+- Elasticsearch 5.6.5 (Dec 6, 2017)
+- Logstash 		5.6.5 (Dec 6, 2017)
+- Kibana 		5.6.5 (Dec 6, 2017)
+- Filebeat 		5.6.5 (Dec 6, 2017)
+- Packetbeat 	5.6.5 (Dec 6, 2017)
+- Metricbeat 	5.6.5 (Dec 6, 2017)
 
 
 ## Release Notes
