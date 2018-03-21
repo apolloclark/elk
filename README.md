@@ -42,12 +42,13 @@ elastic2x
 - Filebeat 		1.3.1 (September 15, 2016)
 
 elastic5x
-- Elasticsearch 5.6.5 (Dec 6, 2017)
-- Logstash 		5.6.5 (Dec 6, 2017)
-- Kibana 		5.6.5 (Dec 6, 2017)
-- Filebeat 		5.6.5 (Dec 6, 2017)
-- Packetbeat 	5.6.5 (Dec 6, 2017)
-- Metricbeat 	5.6.5 (Dec 6, 2017)
+- Elasticsearch 5.6.8 (Feb 20, 2018)
+- Logstash 		5.6.8 (Feb 20, 2018)
+- Kibana 		5.6.8 (Feb 20, 2018)
+- Filebeat 		5.6.8 (Feb 20, 2018)
+- Packetbeat 	5.6.8 (Feb 20, 2018)
+- Metricbeat 	5.6.8 (Feb 20, 2018)
+- Heartbeat 	5.6.8 (Feb 20, 2018)
 
 
 ## Release Notes
@@ -80,13 +81,16 @@ X-Pack
 ```shell
 
 # filebeat
-/var/log/filebeat/filebeat
+/var/log/filebeat/filebeat.log
+
+# packetbeat
+/var/log/packetbeat/packetbeat.log
 
 # metricbeat
-/var/log/metricbeat/metricbeat
+/var/log/metricbeat/metricbeat.log
 
 # heartbeat
-/var/log/heartbeat/heartbeat
+/var/log/heartbeat/heartbeat.log
 
 # logstash
 /var/log/logstash/logstash-plain.log
