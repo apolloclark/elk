@@ -4,7 +4,7 @@
 Vagrant.configure("2") do |config|
 
     # configure VM
-    config.vm.box = "apolloclark/ubuntu1604"
+    config.vm.box = "apolloclark/ubuntu16.04"
     config.ssh.insert_key = false
     
     # configure provisioning
