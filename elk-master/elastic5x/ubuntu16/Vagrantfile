@@ -6,16 +6,16 @@ Vagrant.configure("2") do |config|
     # configure VM
     config.vm.box = "apolloclark/ubuntu16.04"
     config.ssh.insert_key = false
-    
+
     # configure provisioning
     config.vm.provision "shell", path: "bootstrap.sh"
-    # config.vm.provision "shell", path: "install_xpack.sh"
-  
+    config.vm.provision "shell", path: "install_xpack.sh"
+
     # configure network ports
     config.vm.network "forwarded_port", host: 9200, guest: 9200 # Elasticsearch
     config.vm.network "forwarded_port", host: 9300, guest: 9300 # Logtash
     config.vm.network "forwarded_port", host: 5601, guest: 5601 # Kibana
-  
+
     config.vm.provider "virtualbox" do |vb, override|
         vb.cpus = 1
         vb.memory = 4096
