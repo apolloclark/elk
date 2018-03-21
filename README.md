@@ -5,6 +5,8 @@ A vagrant based ELK stack (Elasticsearch, Logstash, Kibana).
 ## Installation
 
 ```shell
+git clone https://github.com/apolloclark/elk
+cd ./elk/elk-master/elastic5x/ubuntu16/
 vagrant box update
 vagrant up
 
